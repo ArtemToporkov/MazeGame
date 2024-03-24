@@ -1,10 +1,22 @@
-class Point {
-    field int X;
-    field int Y;
 
-    constructor Point new(int x, int y) {
-        let X = x;
-        let Y = y;
+class Point {
+    field int x, y;
+
+    constructor Point new(int Ax, int Ay) {
+        let x = Ax;
+        let y = Ay;
+        do draw();
         return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + 4, y + 4);
+        return;
     }
 }
