@@ -1,3 +1,12 @@
 class Game {
-    
+    field Point player;
+
+    constructor Game new() {
+        return this;
+    }
+
+    method void dispose() {
+        do memory.deAlloc(this);
+        return;
+    }
 }
