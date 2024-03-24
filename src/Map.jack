@@ -11,4 +11,8 @@ class Map {
         do Memory.deAlloc(this);
         return;
     }
+
+    method void draw() {
+        // ...
+    }
 }

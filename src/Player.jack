@@ -13,8 +13,8 @@ class Player {
         return;
     }
 
-    //* true - black, false - white */
-    method void draw(boolean color) {
+    //* true - draw, false - erase */
+    method void drawOrErase(boolean color) {
         var int x;
         var int y;
         let x = location.X();
@@ -26,8 +26,13 @@ class Player {
         return;
     }
 
+    method void draw() {
+        do drawOrErase(true);
+        return;
+    }
+
     method void erase() {
-        do draw(false);
+        do drawOrErase(false);
         return;
     }
 
@@ -41,7 +46,8 @@ class Player {
 
         do location.dispose();
         let location = Point.new(newX, newY);
-        do draw(true);
+
+        do draw();
 
         return;
     }
