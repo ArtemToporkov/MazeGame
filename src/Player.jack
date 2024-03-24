@@ -3,6 +3,7 @@ class Player {
 
     constructor Player new(int xLocation, int yLocation) {
         let location = Point.new(xLocation, yLocation);
+        do draw(true);
         return this;
     }
 
@@ -12,15 +13,35 @@ class Player {
         return;
     }
 
+    //* true - black, false - white */
+    method void draw(boolean color) {
+        var int x;
+        var int y;
+        let x = location.X();
+        let y = location.Y();
+
+        do Screen.setColor(color);
+        do Screen.drawRectangle(x, y, x + 8, y + 8);
+
+        return;
+    }
+
+    method void erase() {
+        do draw(false);
+        return;
+    }
+
     method void move(int dx, int dy) {
         var int newX;
         var int newY;
-
         let newX = location.X() + dx;
         let newY = location.Y() + dy;
 
-        // if (...)
-        do location.relocate(newX, newY);
+        do erase();
+
+        do location.dispose();
+        let location = Point.new(newX, newY);
+        do draw(true);
 
         return;
     }

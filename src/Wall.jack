@@ -1,0 +1,29 @@
+class Wall {
+    field Point location;
+
+    constructor Wall new(int x, int y) {
+        let location = Point.new(x, y);
+        do draw();
+        
+        return this;
+    }
+
+    method void dispose() {
+        do location.dispose();
+        do Memory.deAlloc(this);
+
+        return;
+    }
+
+    method void draw() {
+        var int x;
+        var int y;
+        let x = location.X();
+        let y = location.Y();
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + 8, y + 8);
+
+        return;
+    }
+}
