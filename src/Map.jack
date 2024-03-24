@@ -3,7 +3,7 @@ class Map {
 
     constructor Map new(Array wallsLocation) {
         let walls = wallsLocation;
-        return
+        return this;
     }
 
     method void dispose() {

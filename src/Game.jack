@@ -1,7 +1,10 @@
 class Game {
+    field Map map;
     field Point player;
 
-    constructor Game new() {
+    constructor Game new(Point playerLocation, Map level) {
+        let player = Player.new(playerLocation.X(), playerLocation.Y());
+        let map = Map.new(level.walls());
         return this;
     }
 
