@@ -1,0 +1,30 @@
+class Player {
+    field Point location;
+
+    constructor Player new(int xLocation, int yLocation) {
+        let location = Point.new(xLocation, yLocation);
+        return this;
+    }
+
+    method void dispose() {
+        do location.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void moveUp() {
+        return;
+    }
+
+    method void moveDown() {
+        return;
+    }
+
+    method void moveLeft() {
+        return;
+    }
+
+    method void moveRight() {
+        return;
+    }
+}

@@ -1,0 +1,14 @@
+class Map {
+    field Array walls;
+
+    constructor Map new(Array wallsLocation) {
+        let walls = wallsLocation;
+        return
+    }
+
+    method void dispose() {
+        do walls.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}
