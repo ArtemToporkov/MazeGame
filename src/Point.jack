@@ -1,0 +1,10 @@
+class Point {
+    field int X;
+    field int Y;
+
+    constructor Point new(int x, int y) {
+        let X = x;
+        let Y = y;
+        return this;
+    }
+}
