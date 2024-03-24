@@ -19,4 +19,16 @@ class Point {
         do Screen.drawRectangle(x, y, x + 8, y + 8);
         return;
     }
+
+    method void relocate(int newX, int newY) {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + 8, y + 8);
+
+        do Memory.deAlloc(this);
+        let x = newX;
+        let y = newY;
+
+        do draw();
+        return;
+    }
 }

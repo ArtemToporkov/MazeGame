@@ -12,19 +12,16 @@ class Player {
         return;
     }
 
-    method void moveUp() {
-        return;
-    }
+    method void move(int dx, int dy) {
+        var int newX;
+        var int newY;
 
-    method void moveDown() {
-        return;
-    }
+        let newX = location.X() + dx;
+        let newY = location.Y() + dy;
 
-    method void moveLeft() {
-        return;
-    }
+        // if (...)
+        do location.relocate(newX, newY);
 
-    method void moveRight() {
         return;
     }
 }
