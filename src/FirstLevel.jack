@@ -1,0 +1,34 @@
+class FirstLevel {
+    field Player player;
+    field Array walls;
+
+
+    constructor Level new() {
+
+        let player = Point.new(0, 0);
+        let walls = Array.new(2);
+
+        var Point begin0;
+        var Point end0;
+        let begin0 = Point.new(8, 0)
+        let end0 = Point.new(32, 8)
+        let walls[0] = wall.New(begin0, end0);
+
+        var Point begin1;
+        var Point end1;
+        let begin0 = Point.new(8, 16)
+        let end0 = Point.new(32, 24)
+        let walls[1] = wall.New(begin0, end0);
+
+        return this;
+    }
+
+    method void dispose () {
+        do walls.dispose();
+        do player.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    
+}

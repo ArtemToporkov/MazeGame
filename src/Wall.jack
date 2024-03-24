@@ -1,10 +1,9 @@
 class Wall {
-    field Point location;
+    field Point begin, end;
 
-    constructor Wall new(int x, int y) {
-        let location = Point.new(x, y);
-        do draw();
-        
+    constructor Wall new(Point beginLocation, Point endLocation) {
+        let begin = beginLocation;
+        let end = endLocation;
         return this;
     }
 
@@ -16,13 +15,8 @@ class Wall {
     }
 
     method void draw() {
-        var int x;
-        var int y;
-        let x = location.X();
-        let y = location.Y();
-
         do Screen.setColor(true);
-        do Screen.drawRectangle(x, y, x + 8, y + 8);
+        do Screen.drawRectangle(begin.X(), begin.Y(), end.X(), end.Y());
 
         return;
     }

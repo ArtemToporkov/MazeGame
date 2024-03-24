@@ -1,8 +1,10 @@
 class Map {
     field Array walls;
+    field int wallsCounter
 
-    constructor Map new(Array wallsLocation) {
+    constructor Map new(Level level) {
         let walls = wallsLocation;
+        let wallsCounter = wallsNumber;
         return this;
     }
 
@@ -13,6 +15,12 @@ class Map {
     }
 
     method void draw() {
-        // ...
+        var int counter;
+        let counter = 0;
+
+        while (counter < wallsCounter) {
+            let counter = counter + 1;
+            do walls[counter].draw();
+        }
     }
 }

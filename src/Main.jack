@@ -1,7 +1,11 @@
 class Main {
     function void main() {
         var Game game;
+        var Lever lvl;
+        let lvl = lvl.new();
         let game = Game.new();
+        do game.run();
+        do game.dispose();
         return;
     }
 }
