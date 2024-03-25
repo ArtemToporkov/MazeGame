@@ -1,0 +1,15 @@
+class Main {
+    function void main() {
+        var Point start;
+        var int size;
+        var Grid grid;
+        var FirstLevel firstLevel;
+
+        let start = Point.new(12, 50);
+        let size = 24;
+        let grid = Grid.new(size, start);
+        let firstLevel = FirstLevel.new(grid);
+        do firstLevel.initialize();
+        return;
+    }
+}

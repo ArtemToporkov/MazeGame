@@ -1,0 +1,105 @@
+class Grid {
+    static int width, height;
+    field Array cells;
+    field Point start;
+    field int rows, cols, size;
+
+    constructor Grid new(int newSize, Point newStart) {
+        var int i, j, index;
+        var Cell lastCell;
+
+        let start = newStart;
+        let size = newSize;
+
+        let width = 488;
+        let height = 192;
+        
+        let cols = width / size;
+        let rows = height / size;
+
+        let width = cols * size;
+        let height = rows * size;
+
+        let cells = Array.new(rows * cols);
+        let i = 0;
+        while (i < rows) {
+            let j = 0;
+            while (j < cols) {
+                let index = (i * cols) + j;
+                let cells[index] = Cell.new(i, j, size, start);
+                let j = j + 1;
+            }
+            
+            let i = i + 1;
+        }
+
+        let lastCell = cells[rows * cols - 1];
+        do lastCell.setRight(false);
+
+        return this;
+    }
+
+    method void draw() {
+        var Cell currentCell;
+        var int i, j;
+
+        do Screen.drawLine(start.x(), start.y(), start.x() + width, start.y());
+        do Screen.drawLine(start.x(), start.y() + size, start.x(), start.y() + height);
+
+        let i = 0;
+        while (i < rows) {
+            let j = 0;
+            while (j < cols) {
+                let currentCell = cells[i * cols + j];
+                do currentCell.draw();
+                let j = j + 1;
+            }
+
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    method int width() {
+        return width;
+    }
+    
+    method int height() {
+        return height;
+    }
+
+    method Array cells() {
+        return cells;
+    }
+
+    method int cols() {
+        return cols;
+    }
+
+    method int rows() {
+        return rows;
+    }
+
+    method void dispose() {
+		var int i;
+		var Cell c;
+		let i = 0;
+		while(i < (rows*cols)) {
+			let c = cells[i];
+			do c.dispose();
+			let i = i + 1;
+		}
+
+		do cells.dispose();
+		do start.dispose();
+		return;
+	}
+
+    method void generateLevel() {
+        var Cell cell;
+        let cell = cells[1];
+        do cell.setBottom(false);
+        return;
+    }
+}

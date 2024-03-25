@@ -1,0 +1,21 @@
+class FirstLevel {
+    field Grid grid;
+    constructor FirstLevel new(Grid newGrid) {
+        let grid = newGrid;
+        return this;
+    }
+
+    method void initialize() {
+        var Array cells;
+        var Cell cell;
+
+        let cells = grid.cells();
+        let cell = cells[1];
+        do cell.setBottom(false);
+        let cell = cells[2];
+        do cell.setRight(false);
+
+        do grid.draw();
+        return;
+    }
+}

@@ -1,0 +1,68 @@
+class Cell {
+    field int size, row, col, i, j;
+    field boolean right, bottom, visited;
+
+    constructor Cell new(int newRow, int newCol, int newSize, Point start) {
+        let size = newSize;
+        let i = newRow;
+        let j = newCol;
+        let row = (i * size) + start.y();
+        let col = (j * size) + start.x();
+        let right = true;
+        let bottom = true;
+        let visited = false;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw() {
+        if (right) {
+            do Screen.drawLine(col + size, row, col + size, row + size);
+        }
+
+        if (bottom) {
+            do Screen.drawLine(col + size, row + size, col, row + size);
+        }
+
+        return;
+    }
+
+    method void setRight(boolean doSet) {
+        let right = doSet;
+        return;
+    }
+
+    method void setBottom(boolean doSet) {
+        let bottom = doSet;
+        return;
+    }
+
+    method boolean hasBottom() {
+        return bottom;
+    }
+
+    method boolean hasRight() {
+        return right;
+    }
+
+    method boolean isVisited() {
+        return visited;
+    }
+
+    method void markAsVisited() {
+        let visited = true;
+        return;
+    }
+
+    method int i() {
+        return i;
+    }
+
+    method int j() {
+        return j;
+    }
+}
