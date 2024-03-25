@@ -1,0 +1,19 @@
+function Main.main 4
+push constant 12
+push constant 50
+call Point.new 2
+pop local 0
+push constant 24
+pop local 1
+push local 1
+push local 0
+call Grid.new 2
+pop local 2
+push local 2
+call FirstLevel.new 1
+pop local 3
+push local 3
+call FirstLevel.initialize 1
+pop temp 0
+push constant 0
+return

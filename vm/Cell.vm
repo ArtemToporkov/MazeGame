@@ -1,0 +1,128 @@
+function Cell.new 0
+push constant 8
+call Memory.alloc 1
+pop pointer 0
+push argument 2
+pop this 0
+push argument 0
+pop this 3
+push argument 1
+pop this 4
+push this 3
+push this 0
+call Math.multiply 2
+push argument 3
+call Point.y 1
+add
+pop this 1
+push this 4
+push this 0
+call Math.multiply 2
+push argument 3
+call Point.x 1
+add
+pop this 2
+push constant 0
+not
+pop this 5
+push constant 0
+not
+pop this 6
+push constant 0
+pop this 7
+push pointer 0
+return
+function Cell.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Cell.draw 0
+push argument 0
+pop pointer 0
+push this 5
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push this 0
+add
+push this 1
+push this 2
+push this 0
+add
+push this 1
+push this 0
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE0
+push this 6
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+push this 0
+add
+push this 1
+push this 0
+add
+push this 2
+push this 1
+push this 0
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE1
+push constant 0
+return
+function Cell.setRight 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 5
+push constant 0
+return
+function Cell.setBottom 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 6
+push constant 0
+return
+function Cell.hasBottom 0
+push argument 0
+pop pointer 0
+push this 6
+return
+function Cell.hasRight 0
+push argument 0
+pop pointer 0
+push this 5
+return
+function Cell.isVisited 0
+push argument 0
+pop pointer 0
+push this 7
+return
+function Cell.markAsVisited 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+pop this 7
+push constant 0
+return
+function Cell.i 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function Cell.j 0
+push argument 0
+pop pointer 0
+push this 4
+return
