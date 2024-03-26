@@ -1,9 +1,11 @@
 class Player {
+
 	static Grid grid;
 	static Point start;
 	field int i, j, x, y, playerSize, cellSize;
 
 	constructor Player new(Point newStart, int newCellSize, Grid newGrid) {
+
 		let start = newStart;
 		let grid = newGrid;
 		let cellSize = newCellSize;
@@ -19,9 +21,11 @@ class Player {
 	}
 
 	method void dispose() {
+
 		do grid.dispose();
 		do start.dispose();
 		do Memory.deAlloc(this);
+
 		return;
 	}
 
@@ -34,8 +38,21 @@ class Player {
 	}
 
 	method void drawOrErase(boolean color) {
+		var int centerX;
+		var int centerY;
+		let centerX = x + x + playerSize / 2;
+		let centerY = y + y + playerSize / 2;
 		do Screen.setColor(color);
-		do Screen.drawRectangle(x, y, x + playerSize, y + playerSize);
+		do Screen.drawCircle(centerX, centerY, playerSize / 2);
+		do Screen.setColor(false);
+		do Screen.drawCircle(x + centerX / 2, y + centerY / 2, 2);
+		do Screen.drawCircle(x + centerX / 2 + (playerSize / 2), y + centerY / 2, 2);
+		do Screen.setColor(color);
+		do Screen.drawCircle(x + centerX / 2, y + centerY / 2, 1);
+		do Screen.drawCircle(x + centerX / 2 + (playerSize / 2), y + centerY / 2, 1);
+		do Screen.setColor(false);
+		do Screen.drawRectangle(centerX - 2, centerY + 1, centerX + 2, centerY + 2);
+		do Screen.setColor(color);
 		return;
 	}
 
