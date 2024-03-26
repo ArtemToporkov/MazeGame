@@ -79,17 +79,17 @@ pop temp 0
 label IF_FALSE1
 push constant 0
 return
-function Cell.setRight 0
+function Cell.deleteRight 0
 push argument 0
 pop pointer 0
-push argument 1
+push constant 0
 pop this 5
 push constant 0
 return
-function Cell.setBottom 0
+function Cell.deleteBottom 0
 push argument 0
 pop pointer 0
-push argument 1
+push constant 0
 pop this 6
 push constant 0
 return

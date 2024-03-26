@@ -1,0 +1,345 @@
+function Player.new 0
+push constant 6
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop static 1
+push argument 2
+pop static 0
+push argument 1
+pop this 5
+push constant 8
+push this 5
+call Math.multiply 2
+push constant 10
+call Math.divide 2
+pop this 4
+push this 4
+push constant 8
+call Math.divide 2
+push static 1
+call Point.x 1
+add
+pop this 2
+push this 4
+push constant 8
+call Math.divide 2
+push static 1
+call Point.y 1
+add
+pop this 3
+push constant 0
+pop this 0
+push constant 0
+pop this 1
+push pointer 0
+return
+function Player.dispose 0
+push argument 0
+pop pointer 0
+push static 0
+call Grid.dispose 1
+pop temp 0
+push static 1
+call Point.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Player.i 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Player.j 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Player.drawOrErase 0
+push argument 0
+pop pointer 0
+push argument 1
+call Screen.setColor 1
+pop temp 0
+push this 2
+push this 3
+push this 2
+push this 4
+add
+push this 3
+push this 4
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Player.draw 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 0
+not
+call Player.drawOrErase 2
+pop temp 0
+push constant 0
+return
+function Player.erase 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 0
+call Player.drawOrErase 2
+pop temp 0
+push constant 0
+return
+function Player.move 1
+push argument 0
+pop pointer 0
+push static 0
+call Grid.cells 1
+pop local 0
+push pointer 0
+call Player.erase 1
+pop temp 0
+push argument 1
+push constant 130
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push local 0
+call Player.left 2
+pop temp 0
+label IF_FALSE0
+push argument 1
+push constant 131
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+push local 0
+call Player.up 2
+pop temp 0
+label IF_FALSE1
+push argument 1
+push constant 132
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+push local 0
+call Player.right 2
+pop temp 0
+label IF_FALSE2
+push argument 1
+push constant 133
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push pointer 0
+push local 0
+call Player.down 2
+pop temp 0
+label IF_FALSE3
+push pointer 0
+call Player.draw 1
+pop temp 0
+push constant 0
+return
+function Player.up 1
+push argument 0
+pop pointer 0
+push static 0
+push this 1
+push constant 1
+sub
+push this 0
+call Grid.isValidPosition 3
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push constant 1
+sub
+push static 0
+call Grid.cols 1
+call Math.multiply 2
+push this 0
+add
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Cell.hasBottom 1
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 3
+push this 5
+sub
+pop this 3
+push this 1
+push constant 1
+sub
+pop this 1
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Player.down 1
+push argument 0
+pop pointer 0
+push static 0
+push this 1
+push constant 1
+add
+push this 0
+call Grid.isValidPosition 3
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push static 0
+call Grid.cols 1
+call Math.multiply 2
+push this 0
+add
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Cell.hasBottom 1
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 3
+push this 5
+add
+pop this 3
+push this 1
+push constant 1
+add
+pop this 1
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Player.left 1
+push argument 0
+pop pointer 0
+push static 0
+push this 1
+push this 0
+push constant 1
+sub
+call Grid.isValidPosition 3
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push static 0
+call Grid.cols 1
+call Math.multiply 2
+push this 0
+push constant 1
+sub
+add
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Cell.hasRight 1
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+push this 5
+sub
+pop this 2
+push this 0
+push constant 1
+sub
+pop this 0
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Player.right 1
+push argument 0
+pop pointer 0
+push static 0
+push this 1
+push this 0
+push constant 1
+add
+call Grid.isValidPosition 3
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push static 0
+call Grid.cols 1
+call Math.multiply 2
+push this 0
+add
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Cell.hasRight 1
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+push this 5
+add
+pop this 2
+push this 0
+push constant 1
+add
+pop this 0
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Player.didIWin 2
+push argument 0
+pop pointer 0
+push static 0
+call Grid.rows 1
+push static 0
+call Grid.cols 1
+call Math.multiply 2
+push constant 1
+sub
+pop local 0
+push this 1
+push static 0
+call Grid.cols 1
+call Math.multiply 2
+push this 0
+add
+pop local 1
+push local 0
+push local 1
+eq
+return

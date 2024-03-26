@@ -1,4 +1,4 @@
-function Main.main 4
+function Main.main 8
 push constant 12
 push constant 50
 call Point.new 2
@@ -9,11 +9,69 @@ push local 1
 push local 0
 call Grid.new 2
 pop local 2
+push local 0
+push local 1
+push local 2
+call Player.new 3
+pop local 4
+push local 2
+call Grid.rows 1
+push local 2
+call Grid.cols 1
+call Math.multiply 2
+push constant 1
+sub
+pop local 7
+push constant 0
+pop local 6
+push local 4
+call Player.draw 1
+pop temp 0
 push local 2
 call FirstLevel.new 1
 pop local 3
 push local 3
 call FirstLevel.initialize 1
 pop temp 0
+label WHILE_EXP0
+push local 6
+not
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 5
+push local 5
 push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 4
+push local 5
+call Player.move 2
+pop temp 0
+push local 4
+call Player.didIWin 1
+pop local 6
+push constant 200
+call Sys.wait 1
+pop temp 0
+label IF_FALSE0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Main.checkForEnd 1
+push argument 0
+call Player.j 1
+push argument 1
+call Grid.cols 1
+call Math.multiply 2
+push argument 0
+call Player.i 1
+add
+pop local 0
+push local 0
+push argument 2
+eq
 return

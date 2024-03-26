@@ -88,8 +88,7 @@ pop pointer 1
 push that 0
 pop local 3
 push local 3
-push constant 0
-call Cell.setRight 2
+call Cell.deleteRight 1
 pop temp 0
 push pointer 0
 return
@@ -226,18 +225,24 @@ call Point.dispose 1
 pop temp 0
 push constant 0
 return
-function Grid.generateLevel 1
+function Grid.isValidPosition 0
 push argument 0
 pop pointer 0
-push constant 1
-push this 0
-add
-pop pointer 1
-push that 0
-pop local 0
-push local 0
+push argument 1
 push constant 0
-call Cell.setBottom 2
-pop temp 0
+lt
+not
+push argument 2
 push constant 0
+lt
+not
+and
+push argument 1
+push this 2
+lt
+and
+push argument 2
+push this 3
+lt
+and
 return
