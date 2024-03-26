@@ -31,13 +31,13 @@ class Cell {
         return;
     }
 
-    method void setRight(boolean doSet) {
-        let right = doSet;
+    method void deleteRight() {
+        let right = false;
         return;
     }
 
-    method void setBottom(boolean doSet) {
-        let bottom = doSet;
+    method void deleteBottom() {
+        let bottom = false;
         return;
     }
 

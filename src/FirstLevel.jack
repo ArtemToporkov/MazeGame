@@ -8,12 +8,47 @@ class FirstLevel {
     method void initialize() {
         var Array cells;
         var Cell cell;
+        var int k;
 
         let cells = grid.cells();
+
+        let cell = cells[0];
+        do cell.deleteBottom();
+
         let cell = cells[1];
-        do cell.setBottom(false);
+        do cell.deleteBottom();
+
         let cell = cells[2];
-        do cell.setRight(false);
+        do cell.deleteRight();
+
+        let cell = cells[20];
+        do cell.deleteBottom();
+
+        let cell = cells[40];
+        do cell.deleteBottom();
+
+        let cell = cells[60];
+        do cell.deleteBottom();
+
+        let cell = cells[80];
+        do cell.deleteBottom();
+
+        let cell = cells[100];
+        do cell.deleteBottom();
+
+        let cell = cells[120];
+        do cell.deleteBottom();
+
+        let k = 120;
+        while (k < 139) {
+            let cell = cells[k];
+            do cell.deleteRight();
+            let k = 
+            k + 1;
+        }
+
+        let cell = cells[139];
+        do cell.deleteBottom();
 
         do grid.draw();
         return;

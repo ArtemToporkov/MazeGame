@@ -4,12 +4,38 @@ class Main {
         var int size;
         var Grid grid;
         var FirstLevel firstLevel;
+        var Player player;
+        var int key;
+        var boolean hasFinished;
+        var int lastCellIndex;
 
         let start = Point.new(12, 50);
         let size = 24;
         let grid = Grid.new(size, start);
+        let player = Player.new(start, size, grid);
+        let lastCellIndex = (grid.rows() * grid.cols()) - 1;
+        let hasFinished = false;
+        do player.draw();
+
         let firstLevel = FirstLevel.new(grid);
         do firstLevel.initialize();
+
+        while (~(hasFinished)) {
+            let key = Keyboard.keyPressed();
+            if (key > 0) {
+                do player.move(key);
+                let hasFinished = player.didIWin();
+                do Sys.wait(200);
+            }
+        }
+
         return;
     }
+
+    function boolean checkForEnd(Player player, Grid grid, int lastCellIndex) {
+		var int gridIndex;
+
+		let gridIndex = (player.j() * grid.cols()) + player.i();
+		return (gridIndex = lastCellIndex);
+	}
 }

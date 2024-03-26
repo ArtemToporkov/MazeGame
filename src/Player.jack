@@ -1,0 +1,136 @@
+class Player {
+	static Grid grid;
+	static Point start;
+	field int i, j, x, y, playerSize, cellSize;
+
+	constructor Player new(Point newStart, int newCellSize, Grid newGrid) {
+		let start = newStart;
+		let grid = newGrid;
+		let cellSize = newCellSize;
+		let playerSize = 8 * cellSize / 10;
+
+		let x = (playerSize / 8) + start.x();
+		let y = (playerSize / 8) + start.y();
+
+		let i = 0;
+		let j = 0;
+
+		return this;
+	}
+
+	method void dispose() {
+		do grid.dispose();
+		do start.dispose();
+		do Memory.deAlloc(this);
+		return;
+	}
+
+	method int i() {
+		return i;
+	}
+
+	method int j() {
+		return j;
+	}
+
+	method void drawOrErase(boolean color) {
+		do Screen.setColor(color);
+		do Screen.drawRectangle(x, y, x + playerSize, y + playerSize);
+		return;
+	}
+
+	method void draw() {
+		do drawOrErase(true);
+		return;
+	}
+
+	method void erase() {
+		do drawOrErase(false);
+		return;
+	}
+
+	method void move(int key) {
+		var Array cells;
+		let cells = grid.cells();
+
+		do erase();
+
+		if (key = 130) { 
+			do left(cells);
+		}
+
+		if (key = 131) {
+			do up(cells);
+		}
+
+		if (key = 132) {
+			do right(cells);
+		}
+
+		if (key = 133) {
+			do down(cells);
+		}
+
+		do draw();
+
+		return;
+	}
+
+	method void up(Array cells) {
+		var Cell cellToCheck;
+		if (grid.isValidPosition(j - 1, i)) {
+			let cellToCheck = cells[((j - 1) * grid.cols()) + i];
+			if (~(cellToCheck.hasBottom())) {
+				let y = y - cellSize;
+				let j = j - 1;
+			}
+		}
+		return;
+	}
+
+	method void down(Array cells) {
+		var Cell cellToCheck;
+		if (grid.isValidPosition(j + 1, i)) {
+			let cellToCheck = cells[(j * grid.cols()) + i];
+			if (~(cellToCheck.hasBottom())) {
+				let y = y + cellSize;
+				let j = j + 1;
+			}
+		}
+		return;
+	}
+
+	method void left(Array cells) {
+		var Cell cellToCheck;
+		if (grid.isValidPosition(j, i - 1)) {
+			let cellToCheck = cells[(j * grid.cols()) + (i - 1)];
+			if (~(cellToCheck.hasRight())) {
+				let x = x - cellSize;
+				let i = i - 1;
+			}
+		}
+		return;
+	}
+
+	method void right(Array cells) {
+		var Cell cellToCheck;
+		if (grid.isValidPosition(j, i + 1)) {
+			let cellToCheck = cells[(j * grid.cols()) + i];
+			if (~(cellToCheck.hasRight())) {
+				let x = x + cellSize;
+				let i = i + 1;
+			}
+		}
+		return;
+	}
+
+	method boolean didIWin() {
+		var int lastCellIndex;
+		var int currentCellIndex;
+
+		let lastCellIndex = (grid.rows() * grid.cols()) - 1;
+		let currentCellIndex = (j * grid.cols()) + i;
+
+		return (lastCellIndex = currentCellIndex);
+	}
+}

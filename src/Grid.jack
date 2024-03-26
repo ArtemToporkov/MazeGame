@@ -34,7 +34,7 @@ class Grid {
         }
 
         let lastCell = cells[rows * cols - 1];
-        do lastCell.setRight(false);
+        do lastCell.deleteRight();
 
         return this;
     }
@@ -96,10 +96,7 @@ class Grid {
 		return;
 	}
 
-    method void generateLevel() {
-        var Cell cell;
-        let cell = cells[1];
-        do cell.setBottom(false);
-        return;
-    }
+    method boolean isValidPosition(int i, int j) {
+		return (~(i < 0) & ~(j < 0) & (i < rows) & (j < cols));
+	}
 }
