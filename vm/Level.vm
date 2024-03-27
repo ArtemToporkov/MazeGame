@@ -87,19 +87,82 @@ call String.dispose 1
 pop temp 0
 push constant 0
 return
-function Level.drawMazeFirstPattern 3
+function Level.drawMazeFirstPattern 4
 push argument 0
 pop pointer 0
 push this 1
 call Grid.cells 1
 pop local 0
+push constant 19
+call Array.new 1
+pop local 1
+push constant 120
+pop local 3
+label WHILE_EXP0
+push local 3
+push constant 130
+lt
+not
+if-goto WHILE_END0
+push local 3
+push constant 120
+sub
+push local 1
+add
+push local 3
+push local 0
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP0
+label WHILE_END0
+push constant 110
+pop local 3
+label WHILE_EXP1
+push local 3
+push constant 119
+lt
+not
+if-goto WHILE_END1
+push local 3
+push constant 100
+sub
+push local 1
+add
+push local 3
+push local 0
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP1
+label WHILE_END1
+push local 1
+push constant 19
+call Cell.deleteRightMany 2
+pop temp 0
 push constant 0
 push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
 push constant 20
@@ -107,8 +170,8 @@ push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
 push constant 40
@@ -116,8 +179,8 @@ push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
 push constant 60
@@ -125,8 +188,8 @@ push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
 push constant 80
@@ -134,8 +197,8 @@ push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
 push constant 100
@@ -143,8 +206,8 @@ push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
 push constant 120
@@ -152,124 +215,26 @@ push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
-push constant 120
-pop local 2
-label WHILE_EXP0
-push local 2
-push constant 130
-lt
-not
-if-goto WHILE_END0
-push local 2
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push local 2
-push constant 1
-add
-pop local 2
-goto WHILE_EXP0
-label WHILE_END0
 push constant 110
 push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
-pop temp 0
-push constant 111
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push constant 112
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push constant 113
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push constant 114
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push constant 115
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push constant 116
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push constant 117
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
-pop temp 0
-push constant 118
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
 pop temp 0
 push constant 119
 push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
 push constant 139
@@ -277,8 +242,8 @@ push local 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 call Cell.deleteBottom 1
 pop temp 0
 push this 1
@@ -300,24 +265,6 @@ push that 0
 pop local 1
 push local 1
 call Cell.deleteBottom 1
-pop temp 0
-push constant 1
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteBottom 1
-pop temp 0
-push constant 2
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteRight 1
 pop temp 0
 push constant 20
 push local 0

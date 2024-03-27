@@ -23,7 +23,7 @@ class Cell {
     }
 
     method void draw() {
-        
+
         if (right) {
             do Screen.drawLine(col + size, row, col + size, row + size);
         }
@@ -32,6 +32,36 @@ class Cell {
             do Screen.drawLine(col + size, row + size, col, row + size);
         }
 
+        return;
+    }
+
+    function void deleteRightMany(Array cells, int count){
+
+        var Cell c;
+        var int i;
+        let i = 0;
+
+        while (i < count){
+            let c = cells[i];
+            do c.deleteRight();
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    function void deleteBottomMany(Array cells, int count){
+
+        var Cell c;
+        var int i;
+        let i = 0;
+
+        while (i < count){
+            let c = cells[i];
+            do c.deleteBottom();
+            let i = i + 1;
+        }
+        
         return;
     }
 

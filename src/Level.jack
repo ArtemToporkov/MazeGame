@@ -47,10 +47,26 @@ class Level {
     method void drawMazeFirstPattern() {
 
         var Array cells;
+        var Array cellsWithoutRight;
         var Cell cell;
         var int k;
 
         let cells = grid.cells();
+        let cellsWithoutRight = Array.new(19);
+
+        let k = 120;
+        while (k < 130) {
+            let cellsWithoutRight[k - 120] = cells[k];
+            let k = k + 1;
+        }
+
+        let k = 110;
+        while (k < 119) {
+            let cellsWithoutRight[k - 100] = cells[k];
+            let k = k + 1;
+        }
+
+        do Cell.deleteRightMany(cellsWithoutRight, 19);
 
         let cell = cells[0];
         do cell.deleteBottom();
@@ -72,41 +88,9 @@ class Level {
 
         let cell = cells[120];
         do cell.deleteBottom();
-
-        let k = 120;
-        while (k < 130) {
-            let cell = cells[k];
-            do cell.deleteRight();
-            let k = k + 1;
-        }
         
         let cell = cells[110];
-        do cell.deleteRight();
         do cell.deleteBottom();
-
-        let cell = cells[111];
-        do cell.deleteRight();
-
-        let cell = cells[112];
-        do cell.deleteRight();
-
-        let cell = cells[113];
-        do cell.deleteRight();
-        
-        let cell = cells[114];
-        do cell.deleteRight();
-
-        let cell = cells[115];
-        do cell.deleteRight();
-
-        let cell = cells[116];
-        do cell.deleteRight();
-
-        let cell = cells[117];
-        do cell.deleteRight();
-        
-        let cell = cells[118];
-        do cell.deleteRight();
 
         let cell = cells[119];
         do cell.deleteBottom();
@@ -128,12 +112,6 @@ class Level {
 
         let cell = cells[0];
         do cell.deleteBottom();
-
-        let cell = cells[1];
-        do cell.deleteBottom();
-
-        let cell = cells[2];
-        do cell.deleteRight();
 
         let cell = cells[20];
         do cell.deleteBottom();
