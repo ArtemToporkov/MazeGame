@@ -54,49 +54,71 @@ class Level {
         let cells = grid.cells();
         let cellsWithoutRight = Array.new(19);
 
+        let cell = cells[140];
+        do cell.removeFill();
+        let cell = cells[130];
+        do cell.removeFill();
+        let cell = cells[159];
+        do cell.removeFill();
+
         let k = 120;
         while (k < 130) {
-            let cellsWithoutRight[k - 120] = cells[k];
+            let cell = cells[k];
+            do cell.removeFill();
+            let cellsWithoutRight[k - 120] = cell;
             let k = k + 1;
         }
 
         let k = 110;
         while (k < 119) {
-            let cellsWithoutRight[k - 100] = cells[k];
+            let cell = cells[k];
+            do cell.removeFill();
+            let cellsWithoutRight[k - 100] = cell;
             let k = k + 1;
         }
 
         do Cell.deleteRightMany(cellsWithoutRight, 19);
 
         let cell = cells[0];
+        do cell.removeFill();
         do cell.deleteBottom();
 
         let cell = cells[20];
+        do cell.removeFill();
         do cell.deleteBottom();
 
         let cell = cells[40];
+        do cell.removeFill();
         do cell.deleteBottom();
 
         let cell = cells[60];
+        do cell.removeFill();
         do cell.deleteBottom();
 
         let cell = cells[80];
+        do cell.removeFill();
         do cell.deleteBottom();
 
         let cell = cells[100];
+        do cell.removeFill();
         do cell.deleteBottom();
 
         let cell = cells[120];
+        do cell.removeFill();
         do cell.deleteBottom();
         
         let cell = cells[110];
+        do cell.removeFill();
         do cell.deleteBottom();
 
         let cell = cells[119];
+        do cell.removeFill();
         do cell.deleteBottom();
 
         let cell = cells[139];
+        do cell.removeFill();
         do cell.deleteBottom();
+        
         do grid.draw();
 
         return;

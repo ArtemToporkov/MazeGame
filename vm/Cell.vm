@@ -1,5 +1,5 @@
 function Cell.new 0
-push constant 8
+push constant 9
 call Memory.alloc 1
 pop pointer 0
 push argument 2
@@ -29,7 +29,10 @@ push constant 0
 not
 pop this 6
 push constant 0
+not
 pop this 7
+push constant 0
+pop this 8
 push pointer 0
 return
 function Cell.dispose 0
@@ -38,6 +41,13 @@ pop pointer 0
 push pointer 0
 call Memory.deAlloc 1
 pop temp 0
+push constant 0
+return
+function Cell.removeFill 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 7
 push constant 0
 return
 function Cell.draw 0
@@ -77,6 +87,21 @@ add
 call Screen.drawLine 4
 pop temp 0
 label IF_FALSE1
+push this 7
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 2
+push this 1
+push this 2
+push this 0
+add
+push this 1
+push this 0
+add
+call Screen.drawRectangle 4
+pop temp 0
+label IF_FALSE2
 push constant 0
 return
 function Cell.deleteRightMany 2
@@ -158,14 +183,14 @@ return
 function Cell.isVisited 0
 push argument 0
 pop pointer 0
-push this 7
+push this 8
 return
 function Cell.markAsVisited 0
 push argument 0
 pop pointer 0
 push constant 0
 not
-pop this 7
+pop this 8
 push constant 0
 return
 function Cell.i 0

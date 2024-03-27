@@ -8,7 +8,7 @@ class Game {
         let firstLevel = Level.new("Level 1: The IRIT-RTF Redemption", 1);
         do firstLevel.run();
 
-        let secondLevel = Level.new("Level 2: Unexpected Turns", 2);
+        let secondLevel = Level.new("Level 2: In Darkness", 2);
         do secondLevel.run();
 
         do Output.moveCursor(11, 22);
