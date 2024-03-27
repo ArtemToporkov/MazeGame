@@ -85,14 +85,16 @@ class Grid {
 		var int i;
 		var Cell c;
 		let i = 0;
+        
 		while(i < (rows*cols)) {
-			do cells[i].dispose();
+			let c = cells[i];
+            do c.dispose();
 			let i = i + 1;
 		}
 
 		do cells.dispose();
 		do start.dispose();
-        do Grid.deAlloc(this);
+
 		return;
 	}
 
