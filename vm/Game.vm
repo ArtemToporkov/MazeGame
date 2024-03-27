@@ -65,7 +65,8 @@ push constant 111
 call String.appendChar 2
 push constant 110
 call String.appendChar 2
-call Level.new 1
+push constant 1
+call Level.new 2
 pop local 0
 push local 0
 call Level.run 1
@@ -122,7 +123,8 @@ push constant 110
 call String.appendChar 2
 push constant 115
 call String.appendChar 2
-call Level.new 1
+push constant 2
+call Level.new 2
 pop local 1
 push local 1
 call Level.run 1

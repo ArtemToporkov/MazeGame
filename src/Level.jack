@@ -5,14 +5,16 @@ class Level {
     field Player player;
     field Point start;
     field int lastCellIndex;
+    field int mazePattern;
 
 
-    constructor Level new(String _levelName) {
+    constructor Level new(String _levelName, int _mazePattern) {
         let start = Point.new(12, 50);
         let grid = Grid.new(24, start);
         let player = Player.new(start, 24, grid);
         let lastCellIndex = (grid.rows() * grid.cols()) - 1;
         let levelName = _levelName;
+        let mazePattern = _mazePattern;
         return this;
     }
 
@@ -27,7 +29,11 @@ class Level {
     method void initialize() {
         do player.draw();
         do printLevelName();
-        do drawMaze();
+        if (mazePattern = 1){
+            do drawMazeFirstPattern();
+        } else {
+            do drawMazeSecondPattern();
+        }
         return;
     }
 
@@ -38,7 +44,7 @@ class Level {
         return;
     }
 
-    method void drawMaze() {
+    method void drawMazeFirstPattern() {
 
         var Array cells;
         var Cell cell;
@@ -68,12 +74,42 @@ class Level {
         do cell.deleteBottom();
 
         let k = 120;
-        while (k < 139) {
+        while (k < 130) {
             let cell = cells[k];
             do cell.deleteRight();
-            let k = 
-            k + 1;
+            let k = k + 1;
         }
+        
+        let cell = cells[110];
+        do cell.deleteRight();
+        do cell.deleteBottom();
+
+        let cell = cells[111];
+        do cell.deleteRight();
+
+        let cell = cells[112];
+        do cell.deleteRight();
+
+        let cell = cells[113];
+        do cell.deleteRight();
+        
+        let cell = cells[114];
+        do cell.deleteRight();
+
+        let cell = cells[115];
+        do cell.deleteRight();
+
+        let cell = cells[116];
+        do cell.deleteRight();
+
+        let cell = cells[117];
+        do cell.deleteRight();
+        
+        let cell = cells[118];
+        do cell.deleteRight();
+
+        let cell = cells[119];
+        do cell.deleteBottom();
 
         let cell = cells[139];
         do cell.deleteBottom();
@@ -82,7 +118,7 @@ class Level {
         return;
     }
     
-    method void makeGrid() {
+    method void drawMazeSecondPattern() {
 
         var Array cells;
         var Cell cell;
