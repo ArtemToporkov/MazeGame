@@ -17,3 +17,14 @@
 
 > "Вполне" - rtf-news
 
+```
+	method void dispose() {
+
+		do grid.dispose();
+		do start.dispose();
+		do Memory.deAlloc(this);
+
+		return;
+	}
+```
+
