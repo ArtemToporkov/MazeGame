@@ -1,6 +1,7 @@
 class Main {
     function void main() {
         var FirstLevel firstLevel;
+        var SecondLevel secondLevel;
         var int key;
         var boolean hasFinished;
         var Player player;
@@ -23,11 +24,29 @@ class Main {
 
         do firstLevel.dispose();
         do Screen.clearScreen();
+
+        let secondLevel = SecondLevel.new();
+        let player = secondLevel.player();
+        let hasFinished = false;
+
+        do secondLevel.initialize();
+
+        while (~(hasFinished)) {
+            let key = Keyboard.keyPressed();
+            if (key > 0) {
+                do player.move(key);
+                let hasFinished = secondLevel.hasEnded();
+                do Sys.wait(200);
+            }
+        }
+
+        do secondLevel.dispose();
+        do Screen.clearScreen();
+
         do Output.moveCursor(11, 22);
         let wonMessage = "CONGRATULATIONS!!!";
         do Output.printString(wonMessage);
         do wonMessage.dispose();
-
 
         return;
     }

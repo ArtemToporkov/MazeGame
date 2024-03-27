@@ -31,7 +31,7 @@ class FirstLevel {
     method void printLevelName() {
         var String levelName;
         
-        let levelName = "Level 1: The IRIT-RTF Redemption.";
+        let levelName = "Level 1: The IRIT-RTF Redemption";
         do Output.moveCursor(2, 15);
         do Output.printString(levelName);
         do levelName.dispose();

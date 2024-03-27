@@ -1,34 +1,34 @@
-function Main.main 5
+function Main.main 6
 call FirstLevel.new 0
 pop local 0
 push local 0
 call FirstLevel.player 1
-pop local 3
+pop local 4
 push constant 0
-pop local 2
+pop local 3
 push local 0
 call FirstLevel.initialize 1
 pop temp 0
 label WHILE_EXP0
-push local 2
+push local 3
 not
 not
 if-goto WHILE_END0
 call Keyboard.keyPressed 0
-pop local 1
-push local 1
+pop local 2
+push local 2
 push constant 0
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push local 3
-push local 1
+push local 4
+push local 2
 call Player.move 2
 pop temp 0
 push local 0
 call FirstLevel.hasEnded 1
-pop local 2
+pop local 3
 push constant 200
 call Sys.wait 1
 pop temp 0
@@ -37,6 +37,47 @@ goto WHILE_EXP0
 label WHILE_END0
 push local 0
 call FirstLevel.dispose 1
+pop temp 0
+call Screen.clearScreen 0
+pop temp 0
+call SecondLevel.new 0
+pop local 1
+push local 1
+call SecondLevel.player 1
+pop local 4
+push constant 0
+pop local 3
+push local 1
+call SecondLevel.initialize 1
+pop temp 0
+label WHILE_EXP1
+push local 3
+not
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 2
+push local 2
+push constant 0
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 4
+push local 2
+call Player.move 2
+pop temp 0
+push local 1
+call SecondLevel.hasEnded 1
+pop local 3
+push constant 200
+call Sys.wait 1
+pop temp 0
+label IF_FALSE1
+goto WHILE_EXP1
+label WHILE_END1
+push local 1
+call SecondLevel.dispose 1
 pop temp 0
 call Screen.clearScreen 0
 pop temp 0
@@ -82,11 +123,11 @@ push constant 33
 call String.appendChar 2
 push constant 33
 call String.appendChar 2
-pop local 4
-push local 4
+pop local 5
+push local 5
 call Output.printString 1
 pop temp 0
-push local 4
+push local 5
 call String.dispose 1
 pop temp 0
 push constant 0
