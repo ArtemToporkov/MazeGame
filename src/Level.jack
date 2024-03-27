@@ -1,15 +1,18 @@
-class SecondLevel {
+class Level {
     
+    field String levelName;
     field Grid grid;
     field Player player;
     field Point start;
     field int lastCellIndex;
 
-    constructor SecondLevel new() {
+
+    constructor Level new(String _levelName) {
         let start = Point.new(12, 50);
         let grid = Grid.new(24, start);
         let player = Player.new(start, 24, grid);
         let lastCellIndex = (grid.rows() * grid.cols()) - 1;
+        let levelName = _levelName;
         return this;
     }
 
@@ -29,14 +32,9 @@ class SecondLevel {
     }
 
     method void printLevelName() {
-
-        var String levelName;
-        let levelName = "Level 2: Unexpected Turns";
-
         do Output.moveCursor(2, 15);
         do Output.printString(levelName);
         do levelName.dispose();
-
         return;
     }
 
@@ -90,12 +88,34 @@ class SecondLevel {
 
     method boolean hasEnded() {
         var Point currentCellIndex;
-
 		let currentCellIndex = (player.j() * grid.cols()) + player.i();
 		return (lastCellIndex = currentCellIndex);
 	}
 
     method Player player() {
         return player;
+    }
+
+    method void run() {
+
+        var int key;
+        var boolean hasFinished;
+        let hasFinished = false;
+
+        do initialize();
+
+        while (~(hasFinished)) {
+            let key = Keyboard.keyPressed();
+            if (key > 0) {
+                do player.move(key);
+                let hasFinished = hasEnded();
+                do Sys.wait(200);
+            }
+        }
+
+        do dispose();
+        do Screen.clearScreen();
+
+        return;
     }
 }

@@ -2,54 +2,17 @@ class Game {
 
     function void start() {
 
-        var FirstLevel firstLevel;
-        var SecondLevel secondLevel;
-        var int key;
-        var boolean hasFinished;
-        var Player player;
-        var String wonMessage;
+        var Level firstLevel;
+        var Level secondLevel;
 
-        let firstLevel = FirstLevel.new();
-        let player = firstLevel.player();
-        let hasFinished = false;
+        let firstLevel = Level.new("Level 1: The IRIT-RTF Redemption");
+        do firstLevel.run();
 
-        do firstLevel.initialize();
-
-        while (~(hasFinished)) {
-            let key = Keyboard.keyPressed();
-            if (key > 0) {
-                do player.move(key);
-                let hasFinished = firstLevel.hasEnded();
-                do Sys.wait(200);
-            }
-        }
-
-        do firstLevel.dispose();
-        do Screen.clearScreen();
-
-        let secondLevel = SecondLevel.new();
-        let player = secondLevel.player();
-        let hasFinished = false;
-
-        do secondLevel.initialize();
-
-        while (~(hasFinished)) {
-            let key = Keyboard.keyPressed();
-            if (key > 0) {
-                do player.move(key);
-                let hasFinished = secondLevel.hasEnded();
-                do Sys.wait(200);
-            }
-        }
-
-        do secondLevel.dispose();
-        do Screen.clearScreen();
+        let secondLevel = Level.new("Level 2: Unexpected Turns");
+        do secondLevel.run();
 
         do Output.moveCursor(11, 22);
-        let wonMessage = "CONGRATULATIONS!!!";
-        do Output.printString(wonMessage);
-    
-        do wonMessage.dispose();
+        do Output.printString("CONGRATULATIONS!!!");
 
         return;
     }

@@ -1,85 +1,131 @@
-function Game.start 6
-call FirstLevel.new 0
+function Game.start 2
+push constant 32
+call String.new 1
+push constant 76
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 49
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 70
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+call Level.new 1
 pop local 0
 push local 0
-call FirstLevel.player 1
-pop local 4
-push constant 0
-pop local 3
-push local 0
-call FirstLevel.initialize 1
+call Level.run 1
 pop temp 0
-label WHILE_EXP0
-push local 3
-not
-not
-if-goto WHILE_END0
-call Keyboard.keyPressed 0
-pop local 2
-push local 2
-push constant 0
-gt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push local 4
-push local 2
-call Player.move 2
-pop temp 0
-push local 0
-call FirstLevel.hasEnded 1
-pop local 3
-push constant 200
-call Sys.wait 1
-pop temp 0
-label IF_FALSE0
-goto WHILE_EXP0
-label WHILE_END0
-push local 0
-call FirstLevel.dispose 1
-pop temp 0
-call Screen.clearScreen 0
-pop temp 0
-call SecondLevel.new 0
+push constant 25
+call String.new 1
+push constant 76
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 50
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 85
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 120
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+call Level.new 1
 pop local 1
 push local 1
-call SecondLevel.player 1
-pop local 4
-push constant 0
-pop local 3
-push local 1
-call SecondLevel.initialize 1
-pop temp 0
-label WHILE_EXP1
-push local 3
-not
-not
-if-goto WHILE_END1
-call Keyboard.keyPressed 0
-pop local 2
-push local 2
-push constant 0
-gt
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push local 4
-push local 2
-call Player.move 2
-pop temp 0
-push local 1
-call SecondLevel.hasEnded 1
-pop local 3
-push constant 200
-call Sys.wait 1
-pop temp 0
-label IF_FALSE1
-goto WHILE_EXP1
-label WHILE_END1
-push local 1
-call SecondLevel.dispose 1
-pop temp 0
-call Screen.clearScreen 0
+call Level.run 1
 pop temp 0
 push constant 11
 push constant 22
@@ -123,12 +169,7 @@ push constant 33
 call String.appendChar 2
 push constant 33
 call String.appendChar 2
-pop local 5
-push local 5
 call Output.printString 1
-pop temp 0
-push local 5
-call String.dispose 1
 pop temp 0
 push constant 0
 return
