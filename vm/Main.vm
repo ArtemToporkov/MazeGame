@@ -1,77 +1,93 @@
-function Main.main 8
-push constant 12
-push constant 50
-call Point.new 2
+function Main.main 5
+call FirstLevel.new 0
 pop local 0
-push constant 24
-pop local 1
-push local 1
 push local 0
-call Grid.new 2
+call FirstLevel.player 1
+pop local 3
+push constant 0
 pop local 2
 push local 0
-push local 1
-push local 2
-call Player.new 3
-pop local 4
-push local 2
-call Grid.rows 1
-push local 2
-call Grid.cols 1
-call Math.multiply 2
-push constant 1
-sub
-pop local 7
-push constant 0
-pop local 6
-push local 4
-call Player.draw 1
-pop temp 0
-push local 2
-call FirstLevel.new 1
-pop local 3
-push local 3
 call FirstLevel.initialize 1
 pop temp 0
 label WHILE_EXP0
-push local 6
+push local 2
 not
 not
 if-goto WHILE_END0
 call Keyboard.keyPressed 0
-pop local 5
-push local 5
+pop local 1
+push local 1
 push constant 0
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push local 4
-push local 5
+push local 3
+push local 1
 call Player.move 2
 pop temp 0
-push local 4
-call Player.didIWin 1
-pop local 6
+push local 0
+call FirstLevel.hasEnded 1
+pop local 2
 push constant 200
 call Sys.wait 1
 pop temp 0
 label IF_FALSE0
 goto WHILE_EXP0
 label WHILE_END0
-push constant 0
-return
-function Main.checkForEnd 1
-push argument 0
-call Player.j 1
-push argument 1
-call Grid.cols 1
-call Math.multiply 2
-push argument 0
-call Player.i 1
-add
-pop local 0
 push local 0
-push argument 2
-eq
+call FirstLevel.dispose 1
+pop temp 0
+call Screen.clearScreen 0
+pop temp 0
+push constant 11
+push constant 22
+call Output.moveCursor 2
+pop temp 0
+push constant 18
+call String.new 1
+push constant 67
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 78
+call String.appendChar 2
+push constant 71
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 85
+call String.appendChar 2
+push constant 76
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 78
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+pop local 4
+push local 4
+call Output.printString 1
+pop temp 0
+push local 4
+call String.dispose 1
+pop temp 0
+push constant 0
 return
