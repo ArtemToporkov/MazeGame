@@ -1,8 +1,10 @@
 class Cell {
+
     field int size, row, col, i, j;
     field boolean right, bottom, visited;
 
     constructor Cell new(int newRow, int newCol, int newSize, Point start) {
+
         let size = newSize;
         let i = newRow;
         let j = newCol;
@@ -11,6 +13,7 @@ class Cell {
         let right = true;
         let bottom = true;
         let visited = false;
+
         return this;
     }
 
@@ -20,6 +23,7 @@ class Cell {
     }
 
     method void draw() {
+        
         if (right) {
             do Screen.drawLine(col + size, row, col + size, row + size);
         }

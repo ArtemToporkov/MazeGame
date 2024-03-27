@@ -38,6 +38,7 @@ class Player {
 	}
 
 	method void drawOrErase(boolean color) {
+
 		var int centerX;
 		var int centerY;
 		let centerX = x + x + playerSize / 2;
@@ -53,6 +54,7 @@ class Player {
 		do Screen.setColor(false);
 		do Screen.drawRectangle(centerX - 2, centerY + 1, centerX + 2, centerY + 2);
 		do Screen.setColor(color);
+		
 		return;
 	}
 
@@ -67,6 +69,7 @@ class Player {
 	}
 
 	method void move(int key) {
+
 		var Array cells;
 		let cells = grid.cells();
 
@@ -94,6 +97,7 @@ class Player {
 	}
 
 	method void up(Array cells) {
+
 		var Cell cellToCheck;
 		if (grid.isValidPosition(j - 1, i)) {
 			let cellToCheck = cells[((j - 1) * grid.cols()) + i];
@@ -102,10 +106,12 @@ class Player {
 				let j = j - 1;
 			}
 		}
+
 		return;
 	}
 
 	method void down(Array cells) {
+
 		var Cell cellToCheck;
 		if (grid.isValidPosition(j + 1, i)) {
 			let cellToCheck = cells[(j * grid.cols()) + i];
@@ -114,10 +120,12 @@ class Player {
 				let j = j + 1;
 			}
 		}
+
 		return;
 	}
 
 	method void left(Array cells) {
+
 		var Cell cellToCheck;
 		if (grid.isValidPosition(j, i - 1)) {
 			let cellToCheck = cells[(j * grid.cols()) + (i - 1)];
@@ -126,10 +134,12 @@ class Player {
 				let i = i - 1;
 			}
 		}
+
 		return;
 	}
 
 	method void right(Array cells) {
+
 		var Cell cellToCheck;
 		if (grid.isValidPosition(j, i + 1)) {
 			let cellToCheck = cells[(j * grid.cols()) + i];
@@ -138,6 +148,7 @@ class Player {
 				let i = i + 1;
 			}
 		}
+
 		return;
 	}
 }

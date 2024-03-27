@@ -1,7 +1,9 @@
 class Point {
+    
     field int x, y;
 
     constructor Point new(int newX, int newY) {
+
         let x = newX;
         let y = newY;
 
