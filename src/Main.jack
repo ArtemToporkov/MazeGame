@@ -1,41 +1,34 @@
 class Main {
     function void main() {
-        var Point start;
-        var int size;
-        var Grid grid;
         var FirstLevel firstLevel;
-        var Player player;
         var int key;
         var boolean hasFinished;
-        var int lastCellIndex;
+        var Player player;
+        var String wonMessage;
 
-        let start = Point.new(12, 50);
-        let size = 24;
-        let grid = Grid.new(size, start);
-        let player = Player.new(start, size, grid);
-        let lastCellIndex = (grid.rows() * grid.cols()) - 1;
+        let firstLevel = FirstLevel.new();
+        let player = firstLevel.player();
         let hasFinished = false;
-        do player.draw();
 
-        let firstLevel = FirstLevel.new(grid);
         do firstLevel.initialize();
 
         while (~(hasFinished)) {
             let key = Keyboard.keyPressed();
             if (key > 0) {
                 do player.move(key);
-                let hasFinished = player.didIWin();
+                let hasFinished = firstLevel.hasEnded();
                 do Sys.wait(200);
             }
         }
 
+        do firstLevel.dispose();
+        do Screen.clearScreen();
+        do Output.moveCursor(11, 22);
+        let wonMessage = "CONGRATULATIONS!!!";
+        do Output.printString(wonMessage);
+        do wonMessage.dispose();
+
+
         return;
     }
-
-    function boolean checkForEnd(Player player, Grid grid, int lastCellIndex) {
-		var int gridIndex;
-
-		let gridIndex = (player.j() * grid.cols()) + player.i();
-		return (gridIndex = lastCellIndex);
-	}
 }

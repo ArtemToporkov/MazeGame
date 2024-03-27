@@ -140,14 +140,4 @@ class Player {
 		}
 		return;
 	}
-
-	method boolean didIWin() {
-		var int lastCellIndex;
-		var int currentCellIndex;
-
-		let lastCellIndex = (grid.rows() * grid.cols()) - 1;
-		let currentCellIndex = (j * grid.cols()) + i;
-
-		return (lastCellIndex = currentCellIndex);
-	}
 }
