@@ -1,20 +1,20 @@
 function Level.new 0
-push constant 6
+push constant 7
 call Memory.alloc 1
 pop pointer 0
 push constant 12
 push constant 50
 call Point.new 2
-pop this 3
+pop this 4
 push constant 24
-push this 3
+push this 4
 call Grid.new 2
 pop this 1
-push this 3
+push this 4
 push constant 24
 push this 1
 call Player.new 3
-pop this 2
+pop this 3
 push this 1
 call Grid.rows 1
 push this 1
@@ -22,11 +22,14 @@ call Grid.cols 1
 call Math.multiply 2
 push constant 1
 sub
-pop this 4
+pop this 5
 push argument 0
 pop this 0
 push argument 1
-pop this 5
+pop this 6
+push this 1
+call Grid.cells 1
+pop this 2
 push pointer 0
 return
 function Level.dispose 0
@@ -35,10 +38,10 @@ pop pointer 0
 push this 1
 call Grid.dispose 1
 pop temp 0
-push this 2
+push this 3
 call Player.dispose 1
 pop temp 0
-push this 3
+push this 4
 call Point.dispose 1
 pop temp 0
 push pointer 0
@@ -49,13 +52,13 @@ return
 function Level.initialize 0
 push argument 0
 pop pointer 0
-push this 2
+push this 3
 call Player.draw 1
 pop temp 0
 push pointer 0
 call Level.printLevelName 1
 pop temp 0
-push this 5
+push this 6
 push constant 1
 eq
 if-goto IF_TRUE0
@@ -76,7 +79,14 @@ function Level.printLevelName 0
 push argument 0
 pop pointer 0
 push constant 2
-push constant 15
+push constant 64
+push this 0
+call String.length 1
+sub
+push constant 2
+call Math.divide 2
+push constant 1
+sub
 call Output.moveCursor 2
 pop temp 0
 push this 0
@@ -87,230 +97,282 @@ call String.dispose 1
 pop temp 0
 push constant 0
 return
-function Level.drawMazeFirstPattern 4
+function Level.drawMazeFirstPattern 0
 push argument 0
 pop pointer 0
+push pointer 0
+push constant 0
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 1
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 2
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 3
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 4
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 4
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 5
+push constant 8
+call Level.deleteRightMany 3
+pop temp 0
+push pointer 0
+push constant 8
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 9
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 10
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 10
+push constant 13
+call Level.deleteRightMany 3
+pop temp 0
+push pointer 0
+push constant 13
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 14
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 14
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 15
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 16
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 16
+push constant 19
+call Level.deleteRightMany 3
+pop temp 0
+push pointer 0
+push constant 20
+call Level.deleteRightAndBottom 2
+pop temp 0
+push pointer 0
+push constant 21
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 22
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 23
+call Level.deleteRightAndBottom 2
+pop temp 0
+push pointer 0
+push constant 24
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 25
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 26
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 27
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 28
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 29
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 30
+push constant 33
+call Level.deleteBottomMany 3
+pop temp 0
+push pointer 0
+push constant 34
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 35
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 37
+push constant 40
+call Level.deleteBottomMany 3
+pop temp 0
+push pointer 0
+push constant 40
+push constant 42
+call Level.deleteBottomMany 3
+pop temp 0
+push pointer 0
+push constant 41
+push constant 43
+call Level.deleteRightMany 3
+pop temp 0
+push pointer 0
+push constant 44
+push constant 47
+call Level.deleteBottomMany 3
+pop temp 0
+push pointer 0
+push constant 48
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 49
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 50
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 51
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 52
+call Level.deleteRight 2
+pop temp 0
+push pointer 0
+push constant 53
+call Level.deleteBottom 2
+pop temp 0
+push pointer 0
+push constant 54
+call Level.deleteRight 2
+pop temp 0
 push this 1
-call Grid.cells 1
-pop local 0
-push constant 19
-call Array.new 1
-pop local 1
-push constant 140
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push constant 130
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push constant 159
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push constant 120
-pop local 3
-label WHILE_EXP0
-push local 3
-push constant 130
-lt
-not
-if-goto WHILE_END0
-push local 3
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 3
-push constant 120
-sub
-push local 1
-add
-push local 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 3
-push constant 1
-add
-pop local 3
-goto WHILE_EXP0
-label WHILE_END0
-push constant 110
-pop local 3
-label WHILE_EXP1
-push local 3
-push constant 119
-lt
-not
-if-goto WHILE_END1
-push local 3
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 3
-push constant 100
-sub
-push local 1
-add
-push local 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 3
-push constant 1
-add
-pop local 3
-goto WHILE_EXP1
-label WHILE_END1
-push local 1
-push constant 19
-call Cell.deleteRightMany 2
+call Grid.draw 1
 pop temp 0
 push constant 0
-push local 0
+return
+function Level.drawMazeSecondPattern 2
+push argument 0
+pop pointer 0
+push constant 0
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
 push constant 20
-push local 0
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
 push constant 40
-push local 0
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
 push constant 60
-push local 0
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
 push constant 80
-push local 0
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
 push constant 100
-push local 0
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
 push constant 120
-push local 0
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
-call Cell.deleteBottom 1
-pop temp 0
-push constant 110
+pop local 0
 push local 0
-add
-pop pointer 1
-push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
 call Cell.deleteBottom 1
 pop temp 0
-push constant 119
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
-pop temp 0
-push local 2
-call Cell.deleteBottom 1
-pop temp 0
+push constant 120
+pop local 1
+label WHILE_EXP0
+push local 1
 push constant 139
-push local 0
+lt
+not
+if-goto WHILE_END0
+push local 1
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 2
-push local 2
-call Cell.removeFill 1
+pop local 0
+push local 0
+call Cell.deleteRight 1
 pop temp 0
-push local 2
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 139
+push this 2
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
 push this 1
@@ -318,132 +380,123 @@ call Grid.draw 1
 pop temp 0
 push constant 0
 return
-function Level.drawMazeSecondPattern 3
+function Level.deleteRight 1
 push argument 0
 pop pointer 0
-push this 1
-call Grid.cells 1
+push argument 1
+push this 2
+add
+pop pointer 1
+push that 0
 pop local 0
+push local 0
+call Cell.deleteRight 1
+pop temp 0
 push constant 0
-push local 0
+return
+function Level.deleteBottom 1
+push argument 0
+pop pointer 0
+push argument 1
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
-push constant 20
-push local 0
+push constant 0
+return
+function Level.deleteRightAndBottom 1
+push argument 0
+pop pointer 0
+push argument 1
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
-call Cell.deleteBottom 1
-pop temp 0
-push constant 40
+pop local 0
 push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
 call Cell.deleteBottom 1
 pop temp 0
-push constant 60
 push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteBottom 1
+call Cell.deleteRight 1
 pop temp 0
-push constant 80
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteBottom 1
-pop temp 0
-push constant 100
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteBottom 1
-pop temp 0
-push constant 120
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 1
-call Cell.deleteBottom 1
-pop temp 0
-push constant 120
-pop local 2
+push constant 0
+return
+function Level.deleteRightMany 1
+push argument 0
+pop pointer 0
 label WHILE_EXP0
-push local 2
-push constant 139
+push argument 1
+push argument 2
 lt
 not
 if-goto WHILE_END0
-push local 2
-push local 0
+push argument 1
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 0
+push local 0
 call Cell.deleteRight 1
 pop temp 0
-push local 2
+push argument 1
 push constant 1
 add
-pop local 2
+pop argument 1
 goto WHILE_EXP0
 label WHILE_END0
-push constant 139
-push local 0
+push constant 0
+return
+function Level.deleteBottomMany 1
+push argument 0
+pop pointer 0
+label WHILE_EXP0
+push argument 1
+push argument 2
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push this 2
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
+pop local 0
+push local 0
 call Cell.deleteBottom 1
 pop temp 0
-push this 1
-call Grid.draw 1
-pop temp 0
+push argument 1
+push constant 1
+add
+pop argument 1
+goto WHILE_EXP0
+label WHILE_END0
 push constant 0
 return
 function Level.hasEnded 1
 push argument 0
 pop pointer 0
-push this 2
+push this 3
 call Player.j 1
 push this 1
 call Grid.cols 1
 call Math.multiply 2
-push this 2
+push this 3
 call Player.i 1
 add
 pop local 0
-push this 4
+push this 5
 push local 0
 eq
 return
 function Level.player 0
 push argument 0
 pop pointer 0
-push this 2
+push this 3
 return
 function Level.run 2
 push argument 0
@@ -466,7 +519,7 @@ gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push this 2
+push this 3
 push local 0
 call Player.move 2
 pop temp 0

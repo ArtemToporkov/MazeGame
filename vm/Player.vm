@@ -420,25 +420,3 @@ label IF_FALSE1
 label IF_FALSE0
 push constant 0
 return
-function Player.didIWin 2
-push argument 0
-pop pointer 0
-push static 0
-call Grid.rows 1
-push static 0
-call Grid.cols 1
-call Math.multiply 2
-push constant 1
-sub
-pop local 0
-push this 1
-push static 0
-call Grid.cols 1
-call Math.multiply 2
-push this 0
-add
-pop local 1
-push local 0
-push local 1
-eq
-return
