@@ -64,12 +64,12 @@ class Level {
         do deleteBottom(15);
         do deleteBottom(16);
         do deleteRightMany(16, 19);
+        do deleteBottom(18);
         do deleteRightAndBottom(20);
-        do deleteRight(21);
-        do deleteBottom(22);
+        do deleteRight(22);
         do deleteRightAndBottom(23);
         do deleteBottom(24);
-        do deleteBottom(25);
+        do deleteRightAndBottom(25);
         do deleteRight(26);
         do deleteBottom(27);
         do deleteBottom(28);
@@ -85,65 +85,177 @@ class Level {
         do deleteBottom(49);
         do deleteRight(50);
         do deleteBottom(51);
-        // хуй
         do deleteRight(52);
         do deleteBottom(53);
         do deleteRight(54);
-
-
-
-
-
-
-
-
-
-
-
-
-
+        do deleteRightAndBottom(55);
+        do deleteRightAndBottom(56);
+        do deleteBottomMany(57, 60);
+        do deleteBottom(60);
+        do deleteRightMany(61, 62);
+        do deleteRight(63);
+        do deleteBottom(62);
+        do deleteBottom(65);
+        do deleteRightMany(66, 68);
+        do deleteBottom(68);
+        do deleteRight(69);
+        do deleteBottomMany(70, 75);
+        do deleteBottom(76);
+        do deleteBottomMany(78, 80);
+        do deleteRightAndBottom(80);
+        do deleteRightAndBottom(82);
+        do deleteRightAndBottom(84);
+        do deleteBottom(86);
+        do deleteRightMany(86, 89);
+        do deleteBottom(89);
+        do deleteBottom(90);
+        do deleteRight(91);
+        do deleteBottom(92);
+        do deleteRightMany(93, 95);
+        do deleteBottom(94);
+        do deleteRight(95);
+        do deleteBottom(96);
+        do deleteRightMany(97, 99);
+        do deleteBottom(98);
+        do deleteRightAndBottom(100);
+        do deleteBottom(101);
+        do deleteRightMany(102, 104);
+        do deleteRight(105);
+        do deleteRight(107);
+        do deleteBottomMany(106, 109);
+        do deleteRight(110);
+        do deleteBottom(111);
+        do deleteRight(112);
+        do deleteBottomMany(113, 116);
+        do deleteRight(116);
+        do deleteBottom(117);
+        do deleteRight(118);
+        do deleteBottom(119);
+        do deleteBottomMany(120, 124);
+        do deleteRightMany(122, 126);
+        do deleteBottomMany(128, 130);
+        do deleteRightMany(129, 131);
+        do deleteRight(132);
+        do deleteBottom(134);
+        do deleteRight(135);
+        do deleteBottom(136);
+        do deleteRight(137);
+        do deleteBottom(138);
+        do deleteBottom(139);
+        do deleteRight(141);
+        do deleteRightMany(143, 147);
+        do deleteRightMany(148, 154);
+        do deleteRightMany(155, 158);
+        do deleteRight(159);
 
         do grid.draw();
         return;
     }
     
     method void drawMazeSecondPattern() {
-        var Cell cell;
-        var int k;
+        do deleteRight(0);
+        do deleteRight(1);
+        do deleteBottom(2);
+        do deleteRight(3);
+        do deleteBottom(4);
+        do deleteRight(4);
+        do deleteRightMany(5, 8);
+        do deleteBottom(8);
+        do deleteBottom(9);
+        do deleteBottom(10);
+        do deleteRightMany(10, 13);
+        do deleteBottom(13);
+        do deleteBottom(14);
+        do deleteRight(14);
+        do deleteBottom(15);
+        do deleteBottom(16);
+        do deleteRightMany(16, 19);
+        do deleteBottom(18);
+        do deleteRightAndBottom(20);
+        do deleteRight(22);
+        do deleteRightAndBottom(23);
+        do deleteBottom(24);
+        do deleteRightAndBottom(25);
+        do deleteRight(26);
+        do deleteBottom(27);
+        do deleteBottom(28);
+        do deleteRight(29);
+        do deleteBottomMany(30, 33);
+        do deleteBottom(34);
+        do deleteRight(35);
+        do deleteBottomMany(37, 40);
+        do deleteBottomMany(40, 42);
+        do deleteRightMany(41, 43);
+        do deleteBottomMany(44, 47);
+        do deleteRight(48);
+        do deleteBottom(49);
+        do deleteRight(50);
+        do deleteBottom(51);
+        do deleteRight(52);
+        do deleteBottom(53);
+        do deleteRight(54);
+        do deleteRightAndBottom(55);
+        do deleteRightAndBottom(56);
+        do deleteBottomMany(57, 60);
+        do deleteBottom(60);
+        do deleteRightMany(61, 62);
+        do deleteRight(63);
+        do deleteBottom(62);
+        do deleteBottom(65);
+        do deleteRightMany(66, 68);
+        do deleteBottom(68);
+        do deleteRight(69);
+        do deleteBottomMany(70, 75);
+        do deleteBottom(76);
+        do deleteBottomMany(78, 80);
+        do deleteRightAndBottom(80);
+        do deleteRightAndBottom(82);
+        do deleteRightAndBottom(84);
+        do deleteBottom(86);
+        do deleteRightMany(86, 89);
+        do deleteBottom(89);
+        do deleteBottom(90);
+        do deleteRight(91);
+        do deleteBottom(92);
+        do deleteRightMany(93, 95);
+        do deleteBottom(94);
+        do deleteRight(95);
+        do deleteBottom(96);
+        do deleteRightMany(97, 99);
+        do deleteBottom(98);
+        do deleteRightAndBottom(100);
+        do deleteBottom(101);
+        do deleteRightMany(102, 104);
+        do deleteRight(105);
+        do deleteRight(107);
+        do deleteBottomMany(106, 109);
+        do deleteRight(110);
+        do deleteBottom(111);
+        do deleteRight(112);
+        do deleteBottomMany(113, 116);
+        do deleteRight(116);
+        do deleteBottom(117);
+        do deleteRight(118);
+        do deleteBottom(119);
+        do deleteBottomMany(120, 124);
+        do deleteRightMany(122, 126);
+        do deleteBottomMany(128, 130);
+        do deleteRightMany(129, 131);
+        do deleteRight(132);
+        do deleteBottom(134);
+        do deleteRight(135);
+        do deleteBottom(136);
+        do deleteRight(137);
+        do deleteBottom(138);
+        do deleteBottom(139);
+        do deleteRight(141);
+        do deleteRightMany(143, 147);
+        do deleteRightMany(148, 154);
+        do deleteRightMany(155, 158);
+        do deleteRight(159);
 
-        let cell = cells[0];
-        do cell.deleteBottom();
-
-        let cell = cells[20];
-        do cell.deleteBottom();
-
-        let cell = cells[40];
-        do cell.deleteBottom();
-
-        let cell = cells[60];
-        do cell.deleteBottom();
-
-        let cell = cells[80];
-        do cell.deleteBottom();
-
-        let cell = cells[100];
-        do cell.deleteBottom();
-
-        let cell = cells[120];
-        do cell.deleteBottom();
-
-        let k = 120;
-        while (k < 139) {
-            let cell = cells[k];
-            do cell.deleteRight();
-            let k = 
-            k + 1;
-        }
-
-        let cell = cells[139];
-        do cell.deleteBottom();
         do grid.draw();
-        
+        do Screen.drawRectangle(0, 50, 511, 255);
         return;
     }
 
