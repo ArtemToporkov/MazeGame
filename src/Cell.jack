@@ -1,7 +1,7 @@
 class Cell {
 
     field int size, row, col, i, j;
-    field boolean right, bottom, isFill, visited;
+    field boolean right, bottom, visited;
 
     constructor Cell new(int newRow, int newCol, int newSize, Point start) {
 
@@ -12,7 +12,6 @@ class Cell {
         let col = (j * size) + start.x();
         let right = true;
         let bottom = true;
-        let isFill = true;
         let visited = false;
 
         return this;
@@ -22,24 +21,17 @@ class Cell {
         do Memory.deAlloc(this);
         return;
     }
-    
-    method void removeFill() {
-        let isFill = false;
-        return;
-    }
-    
+
     method void draw() {
 
         if (right) {
+            do Screen.setColor(true);
             do Screen.drawLine(col + size, row, col + size, row + size);
         }
 
         if (bottom) {
+            do Screen.setColor(true);
             do Screen.drawLine(col + size, row + size, col, row + size);
-        }
-
-        if (isFill) {
-            do Screen.drawRectangle(col, row, col + size, row + size);
         }
 
         return;

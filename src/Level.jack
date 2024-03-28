@@ -2,6 +2,7 @@ class Level {
     
     field String levelName;
     field Grid grid;
+    field Array cells;
     field Player player;
     field Point start;
     field int lastCellIndex;
@@ -15,6 +16,7 @@ class Level {
         let lastCellIndex = (grid.rows() * grid.cols()) - 1;
         let levelName = _levelName;
         let mazePattern = _mazePattern;
+        let cells = grid.cells();
         return this;
     }
 
@@ -38,99 +40,76 @@ class Level {
     }
 
     method void printLevelName() {
-        do Output.moveCursor(2, 15);
+        do Output.moveCursor(2, (64 - levelName.length()) / 2 - 1);
         do Output.printString(levelName);
         do levelName.dispose();
         return;
     }
 
     method void drawMazeFirstPattern() {
+        do deleteRight(0);
+        do deleteRight(1);
+        do deleteBottom(2);
+        do deleteRight(3);
+        do deleteBottom(4);
+        do deleteRight(4);
+        do deleteRightMany(5, 8);
+        do deleteBottom(8);
+        do deleteBottom(9);
+        do deleteBottom(10);
+        do deleteRightMany(10, 13);
+        do deleteBottom(13);
+        do deleteBottom(14);
+        do deleteRight(14);
+        do deleteBottom(15);
+        do deleteBottom(16);
+        do deleteRightMany(16, 19);
+        do deleteRightAndBottom(20);
+        do deleteRight(21);
+        do deleteBottom(22);
+        do deleteRightAndBottom(23);
+        do deleteBottom(24);
+        do deleteBottom(25);
+        do deleteRight(26);
+        do deleteBottom(27);
+        do deleteBottom(28);
+        do deleteRight(29);
+        do deleteBottomMany(30, 33);
+        do deleteBottom(34);
+        do deleteRight(35);
+        do deleteBottomMany(37, 40);
+        do deleteBottomMany(40, 42);
+        do deleteRightMany(41, 43);
+        do deleteBottomMany(44, 47);
+        do deleteRight(48);
+        do deleteBottom(49);
+        do deleteRight(50);
+        do deleteBottom(51);
+        // хуй
+        do deleteRight(52);
+        do deleteBottom(53);
+        do deleteRight(54);
 
-        var Array cells;
-        var Array cellsWithoutRight;
-        var Cell cell;
-        var int k;
 
-        let cells = grid.cells();
-        let cellsWithoutRight = Array.new(19);
 
-        let cell = cells[140];
-        do cell.removeFill();
-        let cell = cells[130];
-        do cell.removeFill();
-        let cell = cells[159];
-        do cell.removeFill();
 
-        let k = 120;
-        while (k < 130) {
-            let cell = cells[k];
-            do cell.removeFill();
-            let cellsWithoutRight[k - 120] = cell;
-            let k = k + 1;
-        }
 
-        let k = 110;
-        while (k < 119) {
-            let cell = cells[k];
-            do cell.removeFill();
-            let cellsWithoutRight[k - 100] = cell;
-            let k = k + 1;
-        }
 
-        do Cell.deleteRightMany(cellsWithoutRight, 19);
 
-        let cell = cells[0];
-        do cell.removeFill();
-        do cell.deleteBottom();
 
-        let cell = cells[20];
-        do cell.removeFill();
-        do cell.deleteBottom();
 
-        let cell = cells[40];
-        do cell.removeFill();
-        do cell.deleteBottom();
 
-        let cell = cells[60];
-        do cell.removeFill();
-        do cell.deleteBottom();
 
-        let cell = cells[80];
-        do cell.removeFill();
-        do cell.deleteBottom();
 
-        let cell = cells[100];
-        do cell.removeFill();
-        do cell.deleteBottom();
 
-        let cell = cells[120];
-        do cell.removeFill();
-        do cell.deleteBottom();
-        
-        let cell = cells[110];
-        do cell.removeFill();
-        do cell.deleteBottom();
 
-        let cell = cells[119];
-        do cell.removeFill();
-        do cell.deleteBottom();
-
-        let cell = cells[139];
-        do cell.removeFill();
-        do cell.deleteBottom();
-        
         do grid.draw();
-
         return;
     }
     
     method void drawMazeSecondPattern() {
-
-        var Array cells;
         var Cell cell;
         var int k;
-
-        let cells = grid.cells();
 
         let cell = cells[0];
         do cell.deleteBottom();
@@ -165,6 +144,50 @@ class Level {
         do cell.deleteBottom();
         do grid.draw();
         
+        return;
+    }
+
+    method void deleteRight(int cellIndex) {
+        var Cell cell;
+        let cell = cells[cellIndex];
+        do cell.deleteRight();
+        return;
+    } 
+
+    method void deleteBottom(int cellIndex) {
+        var Cell cell;
+        let cell = cells[cellIndex];
+        do cell.deleteBottom();
+        return;
+    } 
+
+    method void deleteRightAndBottom(int cellIndex) {
+        var Cell cell;
+        let cell = cells[cellIndex];
+        do cell.deleteBottom();
+        do cell.deleteRight();
+        return;
+    }
+
+    method void deleteRightMany(int startCell, int endCell) {
+        var Cell cell;
+        while (startCell < endCell) {
+            let cell = cells[startCell];
+            do cell.deleteRight();
+            let startCell = startCell + 1;
+        }
+
+        return;
+    }
+
+    method void deleteBottomMany(int startCell, int endCell) {
+        var Cell cell;
+        while (startCell < endCell) {
+            let cell = cells[startCell];
+            do cell.deleteBottom();
+            let startCell = startCell + 1;
+        }
+
         return;
     }
 
